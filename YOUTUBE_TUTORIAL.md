@@ -1,4 +1,4 @@
-URL: https://www.youtube.com/watch?v=kHq77-I1ZjE&t=1228s
+URL: https://www.youtube.com/watch?v=kHq77-I1ZjE&t=1228s  - Got up to Min 44
 
 Down load VSCode
 When working wiht VS-code for python projects we need to create a virtual Environment first
