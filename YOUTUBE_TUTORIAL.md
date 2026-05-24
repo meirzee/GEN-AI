@@ -23,6 +23,10 @@ This will contain all the API keys ( we should not keep them on the code files s
 
 If we want to use OpenAI on our code we need to create an api key for that use. ( same for any other LLM like Gemini or Anthropic Cloud etc )
 
+## Open AI dash board
+
+my dashboard: https://platform.openai.com/home
+
 Search on google "Open AI API"  -->  Developers --> API Platforms 
 Click on start Building --> API Dash Board  
 
