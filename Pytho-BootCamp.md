@@ -18,3 +18,12 @@ venv is a virtual env directory that will automatically be created on your VSCod
 
 Jupiter Note Book Files - files that can be used for executing python commands one by one for learnning puposes ( with .ipynb extentions )
 
+## NLP
+
+### Natural Language Programin
+
+it is built of:
+
+1. Text preprocessing: tokenizing the data , Limmatization, stemming ,stop words ( thests are Text processing technics )
+2. Text processing2 : Converting the data in to vectors
+
