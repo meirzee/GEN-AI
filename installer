@@ -1,0 +1,57 @@
+import os
+import shutil
+import streamlit as st
+import numpy as np
+from git import Repo
+#import panda as pd
+import subprocess
+import stat
+
+current_dir = os.getcwd()
+one_up = os.path.dirname(current_dir)
+workspace = os.path.join(current_dir, "workspace")
+git_clone_dir = os.path.join(workspace, "GIT" )
+tags_file = os.path.join(git_clone_dir, "Tags.xml")
+oth_repo_url="https://github.com/meirzee/GEN-AI.git"
+
+
+st.title("Okapi - OTH installation")
+st.write("This tool is used for preparing installation on Air-Gapped Lab. ")
+st.write("Follow the instruction and at the end you will get a zip file to take and deploy on the lab.")
+st.write("")
+
+
+release_version=st.text_input("Enter the release version as it appears the git tag:")
+if release_version:
+    if os.path.exists(git_clone_dir):
+        #subprocess.run(["chmod", "-R", "777", git_clone_dir]) #add this on linux machine
+        shutil.rmtree(git_clone_dir)  # remove old git cloned directory
+    result = subprocess.run([ "git", "clone", "--branch", release_version, "--depth", "1", oth_repo_url, git_clone_dir ])
+    if result.returncode == 0:
+        st.success(f"Repository cloned successfully into: {workspace}")
+        os.chmod(tags_file, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
+
+    else:
+        st.error("Git clone failed. Check the tag name or repository URL.")
+
+if os.path.exists(git_clone_dir):
+    modify = st.radio(
+        "Would you like to modify the tags.xml file?",
+        ["No", "Yes"]
+    )
+
+    if modify == "Yes":
+        if os.path.exists(tags_file):
+            with open(tags_file, "r") as f:
+                content = f.read()
+
+            st.subheader("tags.xml content")
+            edited = st.text_area("Edit tags.xml:", content, height=300)
+
+            if st.button("Save changes"):
+                with open(tags_file, "w") as f:
+                    f.write(edited)
+                st.success("tags.xml updated successfully")
+        else:
+            st.error("tags.xml not found in the cloned repository")
+
