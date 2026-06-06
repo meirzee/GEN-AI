@@ -12,6 +12,7 @@ one_up = os.path.dirname(current_dir)
 workspace = os.path.join(current_dir, "workspace")
 git_clone_dir = os.path.join(workspace, "GIT" )
 tags_file = os.path.join(git_clone_dir, "Tags.xml")
+env_file = os.path.join(git_clone_dir, ".env")
 oth_repo_url="https://github.com/meirzee/GEN-AI.git"
 
 
@@ -55,3 +56,22 @@ if os.path.exists(git_clone_dir):
         else:
             st.error("tags.xml not found in the cloned repository")
 
+    modify_env = st.radio(
+        "Would you like to modify the .env file?",
+        ["No", "Yes"]
+    )
+
+    if modify_env == "Yes":
+        if os.path.exists(env_file):
+            with open(env_file, "r") as f:
+                content = f.read()
+
+            st.subheader(".env content")
+            edited = st.text_area("Edit .env:", content, height=300)
+
+            if st.button("Save changes"):
+                with open(env_file, "w") as f:
+                    f.write(edited)
+                st.success("tags.xml updated successfully")
+        else:
+            st.error("tags.xml not found in the cloned repository")
