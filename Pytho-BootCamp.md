@@ -20,7 +20,7 @@ Jupiter Note Book Files - files that can be used for executing python commands o
 
 ## NLP
 
-### Natural Language Programin
+### Natural Language Programin 
 
 it is built of:
 
