@@ -1,5 +1,5 @@
 Python Boot-Camp:
-https://github.com/krishnaik06/Complete-Python-Bootcamp
+https://github.com/krishnaik06/Complete-Python-Bootcamp 
 
 Working with VS Code we can actually use different languages ( it was not built only for Python )
 So for that we need to create a virtual Environment so that the VSCode will know that this is a python env and it will contain many libraries that are
